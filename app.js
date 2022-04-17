@@ -7,16 +7,19 @@
     various gaming services. This app will be deployed to a cloud endpoint.
 */
 
+// app wide dependancies
 const express = require('express');
 const app = express();
 require('dotenv').config(); // use process varaibles
 
-// use routes
+// external routes
 const xboxLive = require('./routes/xbox-live');
 
+// configure routes and parsers
 app.use(xboxLive);
 
-app.get('/', (req, res) => {
+
+app.get('/', (res) => {
     res.send('Game Service API Endpoint for Money Mouth')
   })
   
