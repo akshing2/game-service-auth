@@ -8,7 +8,7 @@
 
 const express = require('express');
 const router = express.Router();
-const authenticate = require('@xboxreplay/xboxlive-auth');
+const xboxLiveAuth = require('@xboxreplay/xboxlive-auth');
 
 // handle authentication requests for xbox live accounts
 router.post('/api/xbox/authenticate', (req, res) => { 
@@ -17,7 +17,7 @@ router.post('/api/xbox/authenticate', (req, res) => {
     const xboxPassword = req.password;
 
     // now authenticate
-    authenticate(xboxEmail, xboxPassword)
+    xboxLiveAuth.authenticate(xboxEmail, xboxPassword)
     .then((responseFromXbox) => {
         // authentication successful so console log response
         console.log(responseFromXbox);
