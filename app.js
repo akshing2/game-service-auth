@@ -11,6 +11,11 @@ const express = require('express');
 const app = express();
 require('dotenv').config(); // use process varaibles
 
+// use routes
+const xboxLive = require('./routes/xbox-live');
+
+app.use(xboxLive);
+
 app.get('/', (req, res) => {
     res.send('Game Service API Endpoint for Money Mouth')
   })
