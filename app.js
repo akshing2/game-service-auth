@@ -4,19 +4,25 @@
 
     @brief:
     This node app will be used to provide api gateways to authenticate logins for 
-    various gaming services. This app will be deployed to a cloud endpoint.
+    various gaming services.
+
+    // TODO: deploy to cloud
 */
 
 // app wide dependancies
-const express = require('express');
-const app = express();
 require('dotenv').config(); // use process varaibles
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const app = express();
 
-// external routes
-const xboxLive = require('./routes/xbox-live');
+// configure parsers app wide
+app.use(bodyParser.json({limit: '10mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended:  true}));
+app.use(cors());
 
-// configure routes and parsers
-app.use(xboxLive);
+// configure routes
+app.use(require('./routes/xbox-live'));
 
 
 app.get('/', (res) => {

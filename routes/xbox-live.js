@@ -10,13 +10,6 @@ const express = require('express');
 const router = express.Router();
 const xboxLiveAuth = require('@xboxreplay/xboxlive-auth');
 
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-router.use(bodyParser.json({limit: '10mb', extended: true}));
-router.use(bodyParser.urlencoded({limit: '10mb', extended:  true}));
-router.use(cors());
-
 // handle authentication requests for xbox live accounts
 router.post('/api/xbox/authenticate', (req, res) => { 
     console.log('Request Body: ', req);
