@@ -10,12 +10,11 @@
 const express = require('express');
 const app = express();
 require('dotenv').config(); // use process varaibles
-const port = 3000;
 
 app.get('/', (req, res) => {
     res.send('Game Service API Endpoint for Money Mouth')
   })
   
-  app.listen(port, () => {
+  app.listen(process.env.PORT, () => {
     console.log(`Game Service Authenticator running on Port: ${process.env.PORT}`)
   })
